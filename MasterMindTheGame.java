@@ -99,6 +99,7 @@ public class MasterMindTheGame
 		    game = false;
 		}
 	    }
+	    game = false;
 	}
 
     }

@@ -1,5 +1,10 @@
 package masterMind;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -205,10 +210,29 @@ public class Berichten
 	JOptionPane.showMessageDialog(null, "Helaas verloren =(", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
     }
     /**
-     * @author JanHo
+     * 
      */
     public static void Win() {
 	JOptionPane.showMessageDialog(null, AsciiArt.AsciiArt(), "MasterMind", JOptionPane.INFORMATION_MESSAGE);
+	String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+
+        if(Desktop.isDesktopSupported()){
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(url));
+            } catch (IOException | URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }else{
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("xdg-open " + url);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
 }
